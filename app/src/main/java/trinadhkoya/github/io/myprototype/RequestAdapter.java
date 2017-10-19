@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class RequestAdapter extends ArrayAdapter<Request> {
 
     RequestOperations requestOperations;
     Request oldRequest;
+    Context mContext;
 
     // View lookup cache
     private static class ViewHolder {
@@ -33,7 +35,7 @@ public class RequestAdapter extends ArrayAdapter<Request> {
         super(context, R.layout.item_user, requestArrayList);
         requestOperations = new RequestOperations(context);
         oldRequest = new Request();
-
+        mContext = context;
     }
 
     @Override
@@ -50,6 +52,7 @@ public class RequestAdapter extends ArrayAdapter<Request> {
             viewHolder.acceptBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Toast.makeText(mContext, "Accepted Successfully ", Toast.LENGTH_SHORT).show();
                     if (request != null) {
                         Log.d("POSITION FUCK", +position + "and DB ID" + request.getReqId());
                     }
@@ -70,6 +73,7 @@ public class RequestAdapter extends ArrayAdapter<Request> {
             viewHolder.rejectBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Toast.makeText(mContext, "Rejected Successfully ", Toast.LENGTH_SHORT).show();
                     assert request != null;
                     Log.d("POSITION FUCK", +position + "and DB ID" + request.getReqId());
                     oldRequest.setReqId(request.getReqId());

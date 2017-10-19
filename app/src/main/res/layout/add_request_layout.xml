@@ -22,4 +22,25 @@
         android:layout_height="wrap_content"
         android:onClick="onClickAddRequest"
         android:text="@string/add_request" />
+
+    <Button
+        android:id="@+id/add_all_requests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ff8800"
+        android:onClick="addAllRequests"
+        android:text="LIST ALL REQUEST"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textStyle="bold" />
+
+
+    <ListView
+        android:id="@+id/all_lists_requested"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+
 </LinearLayout>
