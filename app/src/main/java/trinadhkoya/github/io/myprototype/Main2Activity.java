@@ -143,8 +143,7 @@ public class Main2Activity extends AppCompatActivity {
 
     public void onClickViewAllRequests(View view) {
 
-        requests = requestOperations.getAllRequests();
-//        requestOperations.close();
+        requests = requestOperations.getAllRequestsInPending();
         RequestAdapter requestAdapter = new RequestAdapter(this, (ArrayList<Request>) requests);
         requestListView.setAdapter(requestAdapter);
 

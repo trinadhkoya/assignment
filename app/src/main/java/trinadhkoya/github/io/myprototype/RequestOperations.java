@@ -93,6 +93,30 @@ public class RequestOperations {
     }
 
 
+    public List<Request> getAllRequestsInPending() {
+
+        Cursor cursor = database.query(RequestDBHandler.TABLE_REQUESTS, allColumns, null, null, null, null, null);
+
+        List<Request> requests = new ArrayList<>();
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                if (!cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_STATUS)).equals("REJECTED") && !cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_STATUS)).equals("ACCEPTED")) {
+
+
+                    Request request = new Request();
+                    request.setReqId(cursor.getLong(cursor.getColumnIndex(RequestDBHandler.COLUMN_ID)));
+                    request.setRequestTitle(cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_REQUEST_DATA)));
+                    request.setStatus(cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_STATUS)));
+                    request.setCreatedDate(cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_CREATED_DATE)));
+                    requests.add(request);
+                }
+
+            }
+        }
+        return requests;
+    }
+
+
     public List<Request> getAcceptedRequests() {
 
         Cursor cursor = database.query(RequestDBHandler.TABLE_REQUESTS, allColumns, null, null, null, null, null);
