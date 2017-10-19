@@ -8,4 +8,5 @@
     <string name="fetch_all_requests">FETCH ALL REQUESTS</string>
     <string name="approve">Approve</string>
     <string name="reject">Reject</string>
+    <string name="fetch_all_accepted_requests">FETCH ACCEPTED</string>
 </resources>

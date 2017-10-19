@@ -1,6 +1,7 @@
 package trinadhkoya.github.io.myprototype;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,10 @@ import java.util.ArrayList;
 
 public class RequestAdapter extends ArrayAdapter<Request> {
 
+
+    RequestOperations requestOperations;
+    Request oldRequest;
+
     // View lookup cache
     private static class ViewHolder {
         TextView requestTitle;
@@ -26,11 +31,14 @@ public class RequestAdapter extends ArrayAdapter<Request> {
 
     public RequestAdapter(Context context, ArrayList<Request> requestArrayList) {
         super(context, R.layout.item_user, requestArrayList);
+        requestOperations = new RequestOperations(context);
+        oldRequest = new Request();
+
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        Request request = getItem(position);
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        final Request request = getItem(position);
         ViewHolder viewHolder; // view lookup cache stored in tag
         if (convertView == null) {
             viewHolder = new ViewHolder();
@@ -39,7 +47,39 @@ public class RequestAdapter extends ArrayAdapter<Request> {
             viewHolder.requestTitle = (TextView) convertView.findViewById(R.id.requeset_title);
             viewHolder.rejectBtn = (Button) convertView.findViewById(R.id.btn_reject);
             viewHolder.acceptBtn = (Button) convertView.findViewById(R.id.btn_approve);
+            viewHolder.acceptBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (request != null) {
+                        Log.d("POSITION FUCK", +position + "and DB ID" + request.getReqId());
+                    }
 
+                    if (request != null) {
+                        oldRequest.setReqId(request.getReqId());
+                    }
+                    oldRequest.setStatus("ACCEPTED");
+                    if (request != null) {
+                        oldRequest.setRequestTitle(request.getRequestTitle());
+                    }
+                    oldRequest.setCreatedDate(Utils.getDateTime());
+                    requestOperations.updateRequest(oldRequest);
+
+                }
+            });
+
+            viewHolder.rejectBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    assert request != null;
+                    Log.d("POSITION FUCK", +position + "and DB ID" + request.getReqId());
+                    oldRequest.setReqId(request.getReqId());
+                    oldRequest.setStatus("REJECTED");
+                    oldRequest.setRequestTitle(request.getRequestTitle());
+                    oldRequest.setCreatedDate(Utils.getDateTime());
+                    requestOperations.updateRequest(oldRequest);
+
+                }
+            });
 
             convertView.setTag(viewHolder);
         } else {
@@ -52,5 +92,5 @@ public class RequestAdapter extends ArrayAdapter<Request> {
         // Return the completed view to render on screen
         return convertView;
     }
-    
+
 }

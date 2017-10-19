@@ -26,10 +26,15 @@ public class Main2Activity extends AppCompatActivity {
 
     LinearLayout allRequestLayout;
     LinearLayout addRequestLayout;
+    LinearLayout allAcceptedLayout;
 
     EditText addRequestET;
     Button addRequestButton;
     Button btnViewRequests;
+
+    Button btnViewAcceptedRequest;
+    ListView requestAcceptedListView;
+
 
     RequestOperations requestOperations;
 
@@ -38,6 +43,7 @@ public class Main2Activity extends AppCompatActivity {
 
     List<Request> requests;
     ListView requestListView;
+    private DBHelper mydb;
 
 
     @SuppressLint("WrongViewCast")
@@ -46,19 +52,27 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+
         requestOperations = new RequestOperations(this);
+        mydb = new DBHelper(this);
         requestOperations.open();
+
 
         request = new Request();
 
         allRequestLayout = (LinearLayout) findViewById(R.id.list_requests);
         addRequestLayout = (LinearLayout) findViewById(R.id.add_request_layout);
+        allAcceptedLayout = (LinearLayout) findViewById(R.id.layout_accepted_requests);
 
         addRequestButton = (Button) findViewById(R.id.add_req_btn);
         addRequestET = (EditText) findViewById(R.id.add_req_et);
 
         btnViewRequests = (Button) findViewById(R.id.btn_view_requests);
         requestListView = (ListView) findViewById(R.id.requests_list);
+
+
+        btnViewAcceptedRequest = (Button) findViewById(R.id.btn_view_accepted_requests);
+        requestAcceptedListView = (ListView) findViewById(R.id.accepted_requests_list);
 
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -77,6 +91,7 @@ public class Main2Activity extends AppCompatActivity {
                 }
                 addRequestLayout.setVisibility(View.VISIBLE);
                 allRequestLayout.setVisibility(View.GONE);
+                allAcceptedLayout.setVisibility(View.GONE);
 
 
             } else if (userType.equals("SERVICE")) {
@@ -86,13 +101,15 @@ public class Main2Activity extends AppCompatActivity {
                 }
                 addRequestLayout.setVisibility(View.GONE);
                 allRequestLayout.setVisibility(View.VISIBLE);
+                allAcceptedLayout.setVisibility(View.GONE);
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                     toolbar.setBackground(new ColorDrawable(Color.CYAN));
                     toolbar.setTitle(userType);
                 }
                 addRequestLayout.setVisibility(View.GONE);
-                allRequestLayout.setVisibility(View.VISIBLE);
+                allRequestLayout.setVisibility(View.GONE);
+                allAcceptedLayout.setVisibility(View.VISIBLE);
             }
 
 
@@ -101,10 +118,15 @@ public class Main2Activity extends AppCompatActivity {
 
 
     public void onClickAddRequest(View view) {
-        request.setStatus(null);
-        request.setRequestTitle(addRequestET.getText().toString());
-        request.setCreatedDate(Utils.getDateTime());
-        requestOperations.addRequest(request);
+
+        mydb.insertContact(addRequestET.getText().toString(), 0);
+
+//        request.setStatus(null);
+//        request.setRequestTitle(addRequestET.getText().toString());
+//        request.setCreatedDate(Utils.getDateTime());
+//        requestOperations.addRequest(request);
+//
+
         Toast t = Toast.makeText(Main2Activity.this, "Request " + request.getReqId() + " has been Created successfully !", Toast.LENGTH_SHORT);
         t.show();
 
@@ -112,20 +134,38 @@ public class Main2Activity extends AppCompatActivity {
 
 
     public void onClickViewAllRequests(View view) {
+        ArrayList array_list = mydb.getAllCotacts();
+        ArrayAdapter<String> itemsAdapter =
 
-
-        requests = requestOperations.getAllRequests();
-        requestOperations.close();
-
-        RequestAdapter requestAdapter = new RequestAdapter(this, (ArrayList<Request>) requests);
-        requestListView.setAdapter(requestAdapter);
-
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array_list);
+        requestListView.setAdapter(itemsAdapter);
 //
 //
+//        requestOperations.open();
 //        requests = requestOperations.getAllRequests();
-//        requestOperations.close();
-//        ArrayAdapter<Request> adapter = new ArrayAdapter<>(this,
-//                android.R.layout.simple_list_item_1, requests);
-//        requestListView.setAdapter(adapter);
+////        requestOperations.close();
+//        RequestAdapter requestAdapter = new RequestAdapter(this, (ArrayList<Request>) array_list);
+//        requestListView.setAdapter(requestAdapter);
+
+    }
+
+
+    public void onClickViewAcceptedRequests(View view) {
+
+
+        ArrayList array_list = mydb.getAllAcceptedCotacts();
+        System.out.println("ACCEPTED"+array_list.toString());
+        ArrayAdapter<String> itemsAdapter =
+
+                new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, array_list);
+        requestAcceptedListView.setAdapter(itemsAdapter);
+////
+//
+//        requestOperations.open();
+//        requests = requestOperations.getAllRequests();
+//        System.out.println(requests.size());
+////        requestOperations.close();
+//        RequestAdapter requestAdapter = new RequestAdapter(this, (ArrayList<Request>) requests);
+//        requestListView.setAdapter(requestAdapter);
     }
 }

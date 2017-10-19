@@ -1,6 +1,7 @@
 package trinadhkoya.github.io.myprototype;
 
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -11,6 +12,7 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by trinadhkoya on 19/10/17.
@@ -91,13 +93,41 @@ public class RequestOperations {
     }
 
 
+    public List<Request> getAcceptedRequests() {
+
+        Cursor cursor = database.query(RequestDBHandler.TABLE_REQUESTS, allColumns, null, null, null, null, null);
+
+        List<Request> requests = new ArrayList<>();
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+
+                Request request = new Request();
+                if (request.getStatus().equals("ACCEPTED")) {
+                    request.setReqId(cursor.getLong(cursor.getColumnIndex(RequestDBHandler.COLUMN_ID)));
+                    request.setRequestTitle(cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_REQUEST_DATA)));
+                    request.setStatus(cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_STATUS)));
+                    request.setCreatedDate(cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_CREATED_DATE)));
+                    requests.add(request);
+                }
+
+            }
+        }
+        return requests;
+    }
+
+
     // Updating Request
     public int updateRequest(Request request) {
+
+        database = dbhandler.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(RequestDBHandler.COLUMN_REQUEST_DATA, request.getRequestTitle());
         values.put(RequestDBHandler.COLUMN_STATUS, request.getStatus());
         values.put(RequestDBHandler.COLUMN_CREATED_DATE, request.getCreatedDate());
+
+
+        System.out.println(database);
 
         // updating row
         return database.update(RequestDBHandler.TABLE_REQUESTS, values,

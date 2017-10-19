@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         serviceTV.setTypeface(null, Typeface.BOLD);
         customerTV.setTypeface(null, Typeface.NORMAL);
         serviceProviderTV.setTypeface(null, Typeface.NORMAL);
+
+        userNameEditText.setText("service");
+        passwordEditText.setText("service");
         Constants.TYPE = "SERVICE";
         if (serviceTV.getText().toString().trim().equals(Constants.TYPE)) {
 
@@ -82,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
         serviceTV.setTypeface(null, Typeface.NORMAL);
         customerTV.setTypeface(null, Typeface.NORMAL);
         serviceProviderTV.setTypeface(null, Typeface.BOLD);
+
+        userNameEditText.setText("subscriber");
+        passwordEditText.setText("subscriber");
+
         Constants.TYPE = "SERVICE PROVIDER";
         if (serviceProviderTV.getText().toString().trim().equals(Constants.TYPE)) {
             if (userNameEditText.getText().toString().trim().equals(Constants.SUBSCRIBER_NAME) && passwordEditText.getText().toString().equals(Constants.SUBSCRIBER_PW)) {
@@ -110,6 +117,10 @@ public class MainActivity extends AppCompatActivity {
         serviceTV.setTypeface(null, Typeface.NORMAL);
         customerTV.setTypeface(null, Typeface.BOLD);
         serviceProviderTV.setTypeface(null, Typeface.NORMAL);
+
+        userNameEditText.setText("user");
+        passwordEditText.setText("user");
+
         Constants.TYPE = "CUSTOMER";
         if (customerTV.getText().toString().trim().equals(Constants.TYPE)) {
             if (userNameEditText.getText().toString().trim().equals(Constants.USER_NAME) && passwordEditText.getText().toString().equals(Constants.USER_PW)) {
