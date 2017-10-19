@@ -17,5 +17,17 @@
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="-51dp" />
 
+    <include
+        layout="@layout/view_all_requests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <include
+        layout="@layout/add_request_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
 
 </LinearLayout>

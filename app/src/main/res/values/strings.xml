@@ -3,4 +3,9 @@
     <string name="cc_service">SERVICE</string>
     <string name="service_provider">SERVICE PROVIDER</string>
     <string name="customer">CUSTOMER</string>
+    <string name="add_request">ADD REQUEST</string>
+    <string name="enter_your_request_title">Enter your request title</string>
+    <string name="fetch_all_requests">FETCH ALL REQUESTS</string>
+    <string name="approve">Approve</string>
+    <string name="reject">Reject</string>
 </resources>

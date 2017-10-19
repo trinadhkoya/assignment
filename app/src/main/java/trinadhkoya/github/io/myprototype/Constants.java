@@ -13,5 +13,4 @@ public class Constants {
     public static final String CC_PW = "service";
     public static final String SUBSCRIBER_PW = "subscriber";
 
-
 }
