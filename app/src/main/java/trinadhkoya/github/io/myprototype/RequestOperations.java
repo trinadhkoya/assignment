@@ -1,7 +1,6 @@
 package trinadhkoya.github.io.myprototype;
 
 
-import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,10 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by trinadhkoya on 19/10/17.
@@ -130,7 +127,7 @@ public class RequestOperations {
                 Log.d("NEE YAMMA", cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_STATUS)));
 
 
-                if (cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_STATUS))!=null && cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_STATUS)).equals("ACCEPTED")) {
+                if (cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_STATUS)) != null && cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_STATUS)).equals("ACCEPTED")) {
                     Request request = new Request();
                     request.setReqId(cursor.getLong(cursor.getColumnIndex(RequestDBHandler.COLUMN_ID)));
                     request.setRequestTitle(cursor.getString(cursor.getColumnIndex(RequestDBHandler.COLUMN_REQUEST_DATA)));

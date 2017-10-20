@@ -3,7 +3,6 @@ package trinadhkoya.github.io.myprototype;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 /**
  * Created by trinadhkoya on 19/10/17.

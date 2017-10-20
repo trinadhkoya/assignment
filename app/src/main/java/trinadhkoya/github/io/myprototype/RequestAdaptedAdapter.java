@@ -5,7 +5,6 @@ package trinadhkoya.github.io.myprototype;
  */
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
