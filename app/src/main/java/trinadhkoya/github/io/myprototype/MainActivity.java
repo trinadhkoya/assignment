@@ -1,6 +1,7 @@
 package trinadhkoya.github.io.myprototype;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -51,6 +52,11 @@ public class MainActivity extends AppCompatActivity {
         customerTV.setTypeface(null, Typeface.NORMAL);
         serviceProviderTV.setTypeface(null, Typeface.NORMAL);
 
+        serviceTV.setTextColor(Color.parseColor("#219688"));
+        customerTV.setTextColor(Color.parseColor("#000000"));
+        serviceProviderTV.setTextColor(Color.parseColor("#000000"));
+
+
         userNameEditText.setText("service");
         passwordEditText.setText("service");
         Constants.TYPE = "SERVICE";
@@ -86,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
         customerTV.setTypeface(null, Typeface.NORMAL);
         serviceProviderTV.setTypeface(null, Typeface.BOLD);
 
+        serviceTV.setTextColor(Color.parseColor("#000000"));
+        customerTV.setTextColor(Color.parseColor("#000000"));
+        serviceProviderTV.setTextColor(Color.parseColor("#2BBCD3"));
+
         userNameEditText.setText("subscriber");
         passwordEditText.setText("subscriber");
 
@@ -117,6 +127,12 @@ public class MainActivity extends AppCompatActivity {
         serviceTV.setTypeface(null, Typeface.NORMAL);
         customerTV.setTypeface(null, Typeface.BOLD);
         serviceProviderTV.setTypeface(null, Typeface.NORMAL);
+
+
+        serviceTV.setTextColor(Color.parseColor("#000000"));
+        customerTV.setTextColor(Color.parseColor("#2BBCD3"));
+        serviceProviderTV.setTextColor(Color.parseColor("#000000"));
+
 
         userNameEditText.setText("user");
         passwordEditText.setText("user");

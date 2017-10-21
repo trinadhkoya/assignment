@@ -10,8 +10,11 @@
         android:id="@+id/btn_view_requests"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#2196f3"
         android:onClick="onClickViewAllRequests"
-        android:text="@string/fetch_all_requests" />
+        android:text="@string/fetch_all_requests"
+        android:textColor="#fff" />
 
 
     <ListView

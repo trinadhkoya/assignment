@@ -5,6 +5,7 @@ package trinadhkoya.github.io.myprototype;
  */
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ public class AllRequestsAdapter extends ArrayAdapter<Request> {
     // View lookup cache
     private static class ViewHolder {
         TextView requestTitle;
-        Button statusButton;
+        TextView statusButton;
 
 
     }
@@ -46,14 +47,22 @@ public class AllRequestsAdapter extends ArrayAdapter<Request> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.items_user_all, parent, false);
             viewHolder.requestTitle = (TextView) convertView.findViewById(R.id.requeset_title);
-            viewHolder.statusButton = (Button) convertView.findViewById(R.id.btn_status);
+            viewHolder.statusButton = (TextView) convertView.findViewById(R.id.text_status);
             assert request != null;
-            if(request.getStatus().equals("ACCEPTED")||request.getStatus().equals("REJECTED")){
+            if (request.getStatus().equals("ACCEPTED")) {
                 viewHolder.statusButton.setText(request.getStatus());
-            }else{
-                viewHolder.statusButton.setText("PENDING");
-            }
+                viewHolder.statusButton.setBackgroundColor(Color.parseColor("#219688"));
 
+            } else if (request.getStatus().equals("REJECTED")) {
+                viewHolder.statusButton.setText(request.getStatus());
+                viewHolder.statusButton.setBackgroundColor(Color.parseColor("#da4538"));
+
+            } else {
+                viewHolder.statusButton.setText("PENDING");
+                viewHolder.statusButton.setBackgroundColor(Color.parseColor("#fc9802"));
+
+
+            }
 
 
             convertView.setTag(viewHolder);

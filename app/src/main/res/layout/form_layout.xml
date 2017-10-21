@@ -26,6 +26,9 @@
         android:id="@+id/btn_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_margin="10dp"
+        android:background="#2196f3"
+        android:text="@string/login"
+        android:textColor="#fff" />
 
 </LinearLayout>

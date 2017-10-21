@@ -12,7 +12,7 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please Tap on any one among 3"
+        android:text="@string/please_tap_on_any_one_among_3"
         android:layout_margin="10dp"
         android:textAlignment="center"
         android:textColor="#ff8800"

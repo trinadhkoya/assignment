@@ -28,7 +28,7 @@ public class RequestAdaptedAdapter extends ArrayAdapter<Request> {
     // View lookup cache
     private static class ViewHolder {
         TextView requestTitle;
-        Button acceptBtn;
+        TextView acceptBtn;
 
     }
 
@@ -48,7 +48,7 @@ public class RequestAdaptedAdapter extends ArrayAdapter<Request> {
             LayoutInflater inflater = LayoutInflater.from(getContext());
             convertView = inflater.inflate(R.layout.item_user_accepted, parent, false);
             viewHolder.requestTitle = (TextView) convertView.findViewById(R.id.requeset_title);
-            viewHolder.acceptBtn = (Button) convertView.findViewById(R.id.btn_approve);
+            viewHolder.acceptBtn = (TextView) convertView.findViewById(R.id.text_approve);
 
             convertView.setTag(viewHolder);
         } else {

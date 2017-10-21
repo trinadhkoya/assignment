@@ -1,12 +1,9 @@
 package trinadhkoya.github.io.myprototype;
 
 import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +17,7 @@ import java.util.Random;
 
 public class Main2Activity extends AppCompatActivity {
 
-    Toolbar toolbar;
+//    Toolbar toolbar;
     String userType;
 
     LinearLayout allRequestLayout;
@@ -77,9 +74,9 @@ public class Main2Activity extends AppCompatActivity {
         allRequestsByUser = (ListView) findViewById(R.id.all_lists_requested);
 
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            toolbar.setBackground(new ColorDrawable(Color.GREEN));
+//            toolbar.setBackground(new ColorDrawable(Color.GREEN));
         }
         Bundle extras = getIntent().getExtras();
 
@@ -88,8 +85,8 @@ public class Main2Activity extends AppCompatActivity {
             userType = extras.getString("USER_TYPE");
             if (userType.equals("CUSTOMER")) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    toolbar.setBackground(new ColorDrawable(Color.RED));
-                    toolbar.setTitle(userType);
+//                    toolbar.setBackground(new ColorDrawable(Color.RED));
+//                    toolbar.setTitle(userType);
                 }
                 addRequestLayout.setVisibility(View.VISIBLE);
                 allRequestLayout.setVisibility(View.GONE);
@@ -98,16 +95,16 @@ public class Main2Activity extends AppCompatActivity {
 
             } else if (userType.equals("SERVICE")) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    toolbar.setBackground(new ColorDrawable(Color.BLACK));
-                    toolbar.setTitle(userType);
+//                    toolbar.setBackground(new ColorDrawable(Color.BLACK));
+//                    toolbar.setTitle(userType);
                 }
                 addRequestLayout.setVisibility(View.GONE);
                 allRequestLayout.setVisibility(View.VISIBLE);
                 allAcceptedLayout.setVisibility(View.GONE);
             } else {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    toolbar.setBackground(new ColorDrawable(Color.CYAN));
-                    toolbar.setTitle(userType);
+//                    toolbar.setBackground(new ColorDrawable(Color.CYAN));
+//                    toolbar.setTitle(userType);
                 }
                 addRequestLayout.setVisibility(View.GONE);
                 allRequestLayout.setVisibility(View.GONE);

@@ -1,14 +1,17 @@
 <resources>
-    <string name="app_name">MyPrototype</string>
-    <string name="cc_service">SERVICE</string>
+    <string name="app_name">Panic Proto</string>
+    <string name="cc_service">CUSTOMER CARE</string>
     <string name="service_provider">SERVICE PROVIDER</string>
-    <string name="customer">CUSTOMER</string>
-    <string name="add_request">ADD REQUEST</string>
-    <string name="enter_your_request_title">Enter your request title</string>
+    <string name="customer">USER</string>
+    <string name="add_request">SEND DETAILS</string>
+    <string name="enter_your_request_title">Enter your Problem Details</string>
     <string name="fetch_all_requests">FETCH ALL REQUESTS</string>
     <string name="approve">Approve</string>
     <string name="reject">Reject</string>
-    <string name="fetch_all_accepted_requests">FETCH ACCEPTED</string>
+    <string name="fetch_all_accepted_requests">FETCH ALL REQUESTS</string>
     <string name="approved_finished">Approved</string>
+    <string name="please_tap_on_any_one_among_3">Select User Type</string>
+    <string name="login">Login</string>
+    <string name="list_all_request">YOUR PAST QUERIES</string>
 
 </resources>
